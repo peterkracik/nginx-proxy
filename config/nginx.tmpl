@@ -306,7 +306,9 @@ server {
 	listen [::]:80 {{ $default_server }};
 	{{ end }}
 	access_log /var/log/nginx/access.log vhost;
-
+    
+    client_max_body_size 32M;
+	
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
 	include /etc/nginx/network_internal.conf;
